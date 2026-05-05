@@ -1,25 +1,65 @@
 import restaurantPhoto from './restaurant.png';
+import varietyDessertPhoto from './variety-dessert.jpeg';
+import veggieBuffPhoto from './veggie-buff.jpeg';
+import cheesyBallsPhoto from './cheesy-balls.jpeg';
+import breadAndButterPhoto from './bread-and-butter.jpeg';
+
+const items = {
+    'varietyDessert': {
+        'name': 'Variety Dessert',
+        'photoUrl': varietyDessertPhoto,
+        'price': '$5',
+    },
+
+    'veggieBuff': {
+        'name': 'Veggie Buff',
+        'photoUrl': veggieBuffPhoto,
+        'price': '$3',
+    },
+
+    'cheesyBalls': {
+        'name': 'Cheesy Balls',
+        'photoUrl': cheesyBallsPhoto,
+        'price': '$2.5',   
+    },
+
+    'breadAndButter': {
+        'name': 'Bread and Butter',
+        'photoUrl': breadAndButterPhoto,
+        'price': '$4', 
+    },
+};
 
 const header = document.createElement('h1');
 
 header.textContent = 'The Menu';
 
-const restaurantImg = document.createElement('img');
+const itemsContainer = document.createElement('div');
+itemsContainer.classList.add('itemsContainer');
 
-restaurantImg.src = restaurantPhoto;
+Object.entries(items).forEach(([key, value]) => {
+    const item = document.createElement('div');
+    item.classList.add('item');
 
-const description = document.createElement('p');
+    const itemPhoto = document.createElement('img');
+    itemPhoto.src = value['photoUrl'];
 
-description.innerText = `A luxury restaurant is more than just a place to eat—it is an immersive experience where every detail is carefully curated to evoke elegance, comfort, and exclusivity. From the moment guests arrive, they are welcomed into an atmosphere that feels both refined and inviting, often marked by grand entrances, soft ambient lighting, and a subtle blend of music that enhances the mood without overwhelming conversation.\n
-Service in a high-end restaurant is attentive yet unobtrusive. Staff are trained to anticipate needs before they are expressed, delivering a seamless dining experience. Every gesture, from the way dishes are presented to the pacing of each course, is executed with precision. Guests are guided through the menu with expertise, often receiving personalized recommendations that align with their preferences.`;
+    const itemHeader = document.createElement('h2');
+    itemHeader.textContent = value['name'];
+
+    const itemPrice = document.createElement('h3');
+    itemPrice.textContent = value['price'];
+
+    const itemOrderButton = document.createElement('Button');
+    itemOrderButton.textContent = 'Order';
+
+    item.append(itemPhoto, itemHeader, itemPrice, itemOrderButton);
+
+    itemsContainer.append(item);
+});
 
 const menuContainer = document.createElement('div');
 
-const orderNowButton = document.createElement('Button');
-orderNowButton.id = 'orderNowButton';
+menuContainer.append(header, itemsContainer);
 
-orderNowButton.textContent = 'Order Now!';
-
-menuContainer.append(header, restaurantImg, description, orderNowButton);
-
-export { menuContainer, orderNowButton };
+export { menuContainer };

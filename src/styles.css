@@ -80,3 +80,37 @@ footer > div {
     display: flex;
     justify-content: center;
 }
+
+.item {
+    background-color: rgb(241, 191, 84);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item * {
+    margin: 0;
+}
+
+.item img {
+    width: 250px;
+    height: 250px;
+}
+
+.item Button {
+    padding: 20px;
+    width: 200px;
+    font-size: 24px;
+    background-color: antiquewhite;
+}
+
+.itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 500px);
+    grid-template-rows: repeat(2, 500px);
+    justify-content: space-evenly;
+    gap: 20px 20px;
+}

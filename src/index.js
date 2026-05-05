@@ -37,6 +37,6 @@ nav.addEventListener('click', (event) => {
 
 });
 
-content.append(homeContainer);
+content.append(menuContainer);
 
 
